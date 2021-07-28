@@ -20,11 +20,7 @@ def home():
 @app.route("/scrape")
 def scrape(): 
     data = scrape_mars.scrape() 
-    keys = data.keys() 
-    for key in keys: 
-        print(f"Key = {key}")
-        print(data[key])
-    return ()
+    return jsonify(data)
 
 if __name__ == '__main__':
     app.run(debug=True)
