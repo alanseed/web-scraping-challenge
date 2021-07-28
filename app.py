@@ -25,3 +25,6 @@ def scrape():
         print(f"Key = {key}")
         print(data[key])
     return ()
+
+if __name__ == '__main__':
+    app.run(debug=True)
