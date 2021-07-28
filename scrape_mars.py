@@ -108,9 +108,9 @@ def scrape():
     return mars_info 
 
 # test the function out 
-mars_info = scrape()
-keys = mars_info.keys
-print(keys)
-
-
-
+#mars_info = scrape()
+#keys = mars_info.keys()
+#for key in keys:
+#    print(f"Key = {key}")
+#    print(mars_info[key])
+#    print()
