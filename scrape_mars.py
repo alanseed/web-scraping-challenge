@@ -92,15 +92,25 @@ def get_hemispheres():
 # here is the scrape function 
 def scrape():
     # get all the info that we need 
-    nasa_date, nasa_title, nasa_para = get_nasa_news()
+    nasa_date, nasa_title, nasa_news = get_nasa_news()
     jpl_image = get_jpl_image()
     mars_table = get_mars_table()
     hemi = get_hemispheres()
 
-    # now package it up as required 
-    return
+    # now package it up in a dictionary 
+    mars_info = {} 
+    mars_info["nasa_date"] = nasa_date
+    mars_info["nasa_title"] = nasa_title
+    mars_info["nasa_news"] = nasa_news
+    mars_info["jpl_image"] = jpl_image
+    mars_info["mars_table"] = mars_table
+    mars_info["hemispheres"] = hemi
+    return mars_info 
 
-
+# test the function out 
+mars_info = scrape()
+keys = mars_info.keys
+print(keys)
 
 
 
