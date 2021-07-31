@@ -7,9 +7,24 @@ from flask import Flask, json, jsonify
 import scrape_mars 
 
 app = Flask(__name__)
+
+#get the most recent scrape and fill out the html template 
 @app.route("/")
 def home():
-    return ("hello world") 
+    
+    #read the most recent data off the database 
+    conn = 'mongodb://localhost:27017'
+    client = pymongo.MongoClient(conn)
+
+    # Declare the database
+    db = client['scrape_database']
+
+    # Declare the collection
+    collection = db['scrape_collection']
+
+    results = collection.find().sort("date",pymongo.DESCENDING)
+    message = f"{results[0]['date']}"
+    return (message) 
 
 @app.route("/scrape")
 def scrape(): 
@@ -23,7 +38,8 @@ def scrape():
     db = client['scrape_database']
     collection = db['scrape_collection'] 
     collection.insert_one(data)
-
+    
+    #TO DO - make scrape return success or fail status on the scrapes 
     return "1"
 
 if __name__ == '__main__':
