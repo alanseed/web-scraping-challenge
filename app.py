@@ -3,7 +3,7 @@ import pandas as pd
 import datetime as dt
 import pymongo
 
-from flask import Flask, json, jsonify
+from flask import Flask, render_template, redirect
 import scrape_mars 
 
 app = Flask(__name__)
@@ -24,8 +24,8 @@ def home():
 
     results = collection.find().sort("date",pymongo.DESCENDING)
     message = f"{results[0]['date']}"
-    return (message) 
-
+    return render_template("index.html", date=message )
+    
 @app.route("/scrape")
 def scrape(): 
     #scrape the data and add the time of the scrape 
@@ -39,8 +39,7 @@ def scrape():
     collection = db['scrape_collection'] 
     collection.insert_one(data)
     
-    #TO DO - make scrape return success or fail status on the scrapes 
-    return "1"
+    return redirect ("/", code=302)
 
 if __name__ == '__main__':
     app.run(debug=True)
