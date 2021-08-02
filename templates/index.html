@@ -11,31 +11,62 @@
   <div class="row">
     <div class="card">
       <div class = "card-body">
-        <h1 class="card-title">Mission to Mars {{date}} </h1>
+        <h1 class="card-title">Mission to Mars</h1>
         <a href="http://127.0.0.1:5000/scrape" class="btn btn-primary">Scrape new data</a>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="card">
+      <div class ="card-header"><h3>{{result.nasa_title}}</h3></div>
         <div class = "card-body">
-          <h3 class="card-title">News from NASA</h3>
+          <p class="card-text">{{result.nasa_news}} </p>
         </div>
     </div>
   </div>
   <div class="row">
-    <div class="card">
-        <div class = "card-body">
-          <h3 class="card-title">Featured Mars Image</h3>
+    <div class="col-md-8">
+      <div class="card">
+        <div  class = "card-header"><h3>Featured Mars Image</h3></div> 
+        <img src="{{result.jpl_image}}" class="card-img-top" alt="mars image">
+      </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div  class = "card-header"><h3>Mars Data</h3></div> 
+          {{result.mars_table|safe}}
         </div>
+      </div>
     </div>
   </div>
   <div class="row">
-    <div class="card">
-        <div class = "card-body">
-          <h3 class="card-title">Mars Hemispheres</h3>
-        </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div  class = "card-header"><h3>{{result.hemispheres[0].title}}</h3></div> 
+        <img src="{{result.hemispheres[0].img_url}}" class="card-img-top" alt="mars image">
+      </div>
     </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div  class = "card-header"><h3>{{result.hemispheres[1].title}}</h3></div> 
+        <img src="{{result.hemispheres[1].img_url}}" class="card-img-top" alt="mars image">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div  class = "card-header"><h3>{{result.hemispheres[2].title}}</h3></div> 
+        <img src="{{result.hemispheres[2].img_url}}" class="card-img-top" alt="mars image">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div  class = "card-header"><h3>{{result.hemispheres[3].title}}</h3></div> 
+        <img src="{{result.hemispheres[3].img_url}}" class="card-img-top" alt="mars image">
+      </div>
+    </div> 
   </div>
 </body>
 </html>
