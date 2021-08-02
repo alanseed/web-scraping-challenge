@@ -1,5 +1,5 @@
 # web-scraping-challenge  
-This challenge scapes images and data on Mars off a numeber of sites, saves the data in a database and renders the data on an HTML page.   
+This challenge scapes images and data on Mars off a number of sites, saves the data in a database and renders the data on an HTML page.   
 The source of the data is  
 * NASA Mars News https://redplanetscience.com/ 
 * JPL Mars Space Images - Featured Image https://spaceimages-mars.com/ 
