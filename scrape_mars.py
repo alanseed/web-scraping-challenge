@@ -71,14 +71,10 @@ def get_hemispheres():
     for link in link_list:
         url = "https://marshemispheres.com/" + link 
         browser.visit(url)
-        
         html_2 = browser.html
         soup_2 = bs(html_2, "html.parser")
-        div = soup_2.find('div', class_="downloads")
-        a_list = div.find_all('a')
-        for a in a_list:
-            if a.contents[0] == "Original":
-                image_list.append("https://marshemispheres.com/"+ a['href'])
+        img = soup_2.find('img', class_="wide-image")
+        image_list.append("https://marshemispheres.com/" + img['src'] )
 
     # combine the lists into a list of dictionaries and return 
     ret_list = []
