@@ -21,10 +21,8 @@ def home():
 
     # Declare the collection
     collection = db['scrape_collection']
-
     results = collection.find().sort("date",pymongo.DESCENDING)
-    message = f"{results[0]['date']}"
-    return render_template("index.html", date=message )
+    return render_template("index.html", result=results[0])
     
 @app.route("/scrape")
 def scrape(): 
