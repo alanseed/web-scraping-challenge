@@ -23,7 +23,8 @@ def home():
         data = scrape_mars.scrape() 
         data["date"] = dt.datetime.utcnow()
         collection.insert_one(data)
-        client.close()
+    
+    client.close()
     return render_template("index.html", result = data)
     
 @app.route("/scrape")
