@@ -15,13 +15,10 @@ def home():
     #read the most recent data off the database 
     conn = 'mongodb://localhost:27017'
     client = pymongo.MongoClient(conn)
-
-    # Declare the database
     db = client['scrape_database']
-
-    # Declare the collection
     collection = db['scrape_collection']
     results = collection.find().sort("date",pymongo.DESCENDING)
+
     return render_template("index.html", result=results[0])
     
 @app.route("/scrape")
@@ -29,14 +26,12 @@ def scrape():
     #scrape the data and add the time of the scrape 
     data = scrape_mars.scrape() 
     data["date"] = dt.datetime.utcnow()
-    
-    #add the dictionary to the mongo database 
     conn = 'mongodb://localhost:27017'
     client = pymongo.MongoClient(conn)
     db = client['scrape_database']
     collection = db['scrape_collection'] 
     collection.insert_one(data)
-    
+
     return redirect ("/", code=302)
 
 if __name__ == '__main__':
